@@ -6,9 +6,9 @@ import Sidebar from "@/components/Sidebar";
 const font = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Music App",
-  description: "Listen to Music!",
-};
+  title: 'Music App',
+  description: 'Listen to Music!',
+}
 
 export default function RootLayout({
   children,
