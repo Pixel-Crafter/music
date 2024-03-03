@@ -22,7 +22,7 @@ const Box: React.FC<BoxProps> = ({
         >
             {children}
         </div>
-    )
+    );
 }
 
 export default  Box;
