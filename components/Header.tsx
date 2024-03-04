@@ -37,8 +37,8 @@ const Header: React.FC<HeaderProps> = ({
                 w-full
                 mb-4
                 flex
-                item-center
-                justify-content
+                items-center
+                justify-between
             ">
                 <div className="
                     hidden
@@ -61,12 +61,12 @@ const Header: React.FC<HeaderProps> = ({
                         <RxCaretLeft className="text-white" size={35}/>
                     </button>
                     <button 
-                    onClick={() => router.forward}
+                        onClick={() => router.forward}
                         className="
                             rounded-full
                             bg-black
                             flex
-                            item-center
+                            items-center
                             justify-center
                             hover:opacity-75
                             transition
