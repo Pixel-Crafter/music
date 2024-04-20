@@ -1,5 +1,6 @@
 "use client";
 
+import uniqid from "uniqid";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
@@ -48,6 +49,7 @@ const uploadModal = () => {
                 return;
             }
 
+            const uniqueId = uniqid();
         } catch (error) {
             toast.error("Something went wrong");
         } finally {
