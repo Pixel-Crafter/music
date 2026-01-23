@@ -80,6 +80,12 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
         }
     }, [sound]);
 
+    useEffect(() => {
+        if (sound) {
+            sound.volume(volume);
+        }
+    }, [volume, sound])
+
     const handlePlay = () => {
         if (!isPlaying) {
             play();

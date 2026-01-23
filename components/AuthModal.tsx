@@ -17,12 +17,26 @@ const AuthModal = () => {
     
     const supabaseClient = useSupabaseClient();
 
+    const [ fullName, setFullName ] = React.useState('');
+
+    const [view, setView] = React.useState<"sign_in" | "sign_up">("sign_in");
+
     useEffect(() => {
         if (session) {
             router.refresh();
             onClose();
         }
     }, [session, router, onClose]);
+
+    useEffect(() => {
+        if (!session || view !== "sign_up" || !fullName.trim()) return;
+
+        supabaseClient.auth.updateUser({
+            data: {
+                full_name: fullName,
+            },
+        });
+    }, [session]);
 
     const onChange = (open: boolean) => {
         if (!open) {
@@ -35,13 +49,28 @@ const AuthModal = () => {
             title="Welcome Back"
             description="Login to your Account"
             isOpen={isOpen}
-            onChange={onChange}
+            onChange={onChange}        
         >
+            {/* {!session && view === "sign_up" && (
+                <div className='mb-4'>
+                    <label className='block text-sm font-medium text-neutral-500 mb-1'>
+                        Full Name
+                    </label>
+                    <input
+                        type='text'
+                        placeholder='Enter your full name'
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        className="w-full rounded-md bg-neutral-800 border border-neutral-700 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+                    />
+                </div>
+            )}             */}
             <Auth
                 supabaseClient={supabaseClient}
-                providers={["github","google"]}
+                providers={[]}
                 theme="dark"
                 magicLink={true}
+                // view={view}
                 appearance={{
                     theme: ThemeSupa,
                     variables:{

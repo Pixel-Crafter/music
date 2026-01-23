@@ -25,6 +25,7 @@ const Slider: React.FC<SliderProps> = ({
             touch-none
             w-full
             h-10
+            group
         "
         defaultValue={[1]}
         value={[value]}
@@ -51,6 +52,24 @@ const Slider: React.FC<SliderProps> = ({
                 "
             />
         </RadixSlider.Track>
+
+        <RadixSlider.Thumb
+            className="
+                block
+                w-4
+                h-4
+                bg-white
+                rounded-full
+                shadow-md
+                scale-0
+                group-hover:scale-100
+                focus:scale-100
+                transition-transform
+                duration-150
+                ease-out
+            "
+        >
+        </RadixSlider.Thumb>
     </RadixSlider.Root>
   );
 }
